@@ -1,0 +1,4 @@
+jupytext
+ipynb-py-convert
+pycurl
+nbconvert
