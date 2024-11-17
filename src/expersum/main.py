@@ -68,5 +68,7 @@ def generate_readme_from_template(result_folder, template_path):
         with open(output_path, "wb") as img_file:
             img_file.write(data)
 
+    os.remove(notebook_filename)
+    
     print(f"Markdown and image outputs saved to folder: {result_folder}")
 
