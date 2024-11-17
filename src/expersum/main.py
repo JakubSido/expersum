@@ -14,6 +14,7 @@ def generate_from_all_templates(template_folder, result_folder):
 
 def generate_readme_from_template(result_folder, template_path):
     file_name = os.path.basename(template_path)
+    file_name_no_ext = os.path.splitext(file_name)[0]
     python_script = os.path.join(result_folder, file_name)
 
     if not os.path.exists(python_script):  # due to results in template repository
@@ -49,7 +50,7 @@ def generate_readme_from_template(result_folder, template_path):
     ep.preprocess(nb, {"metadata": {"path": result_folder}})
 
     # Modify the `resources` dictionary to specify the output folder for images
-    resources = {"output_files_dir": "img", "metadata": {"path": result_folder}}
+    resources = {"output_files_dir": f"img_{file_name_no_ext}", "metadata": {"path": result_folder}}
 
     # Export the notebook to markdown, with image outputs saved in `output_folder`
     body, resources = exporter.from_notebook_node(nb, resources=resources)
